@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             });
 
             // window.spamInterval = spamInterval;
-        }, 1);
+        }, 1000);
     }
 });
 
