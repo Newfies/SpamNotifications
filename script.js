@@ -15,6 +15,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
         return Math.floor(Math.random() * 1000000); 
     }
 
+    const label = document.getElementById('label');
+    const slide = document.getElementById('range');
+
+    slide.addEventListener('change', function(){
+        let val = slide.value;
+        label.innerHTML = val;
+    })
+
     // Spoopy Titles
     const TitleChoices = [
         'I See You', 'I’m Always Watching', 'You Can’t Hide', 'I’m Always Behind You', 'I Can Hear You Breathe',
@@ -186,18 +194,22 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
 
     // Spam The Notifications
+    function run(){
     if (Notification.permission === "granted") {
+        let delay = slide.value;
         let spamInterval = setInterval(() => {
             let message = getRandomTitleAndDescription();
             new Notification(message.title, {
                 body: message.description,
-                icon: `https://loremflickr.com/320/240/${message.keyword}`
+                // icon: `https://loremflickr.com/320/240/${message.keyword}`
             });
 
             // window.spamInterval = spamInterval;
-        }, 1000);
+        }, delay);
     }
+}
 });
+
 
 // Stopping The Spam
 // clearInterval(window.spamInterval);
