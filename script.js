@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     const label = document.getElementById('label');
     const slide = document.getElementById('range');
+    const start = document.getElementById('start');
 
     slide.addEventListener('change', function(){
         let val = slide.value;
@@ -194,20 +195,21 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
 
     // Spam The Notifications
-    function run(){
-    if (Notification.permission === "granted") {
-        let delay = slide.value;
-        let spamInterval = setInterval(() => {
-            let message = getRandomTitleAndDescription();
-            new Notification(message.title, {
-                body: message.description,
-                // icon: `https://loremflickr.com/320/240/${message.keyword}`
-            });
-
-            // window.spamInterval = spamInterval;
-        }, delay);
-    }
-}
+    start.addEventListener('click', function(){
+        alert('click')
+        if (Notification.permission === "granted") {
+            let delay = slide.value;
+            let spamInterval = setInterval(() => {
+                let message = getRandomTitleAndDescription();
+                new Notification(message.title, {
+                    body: message.description,
+                    // icon: `https://loremflickr.com/320/240/${message.keyword}`
+                });
+    
+                // window.spamInterval = spamInterval;
+            }, delay);
+        }
+    })
 });
 
 
