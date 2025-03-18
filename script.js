@@ -196,7 +196,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     // Spam The Notifications
     start.addEventListener('click', function(){
-        alert('click')
+        if (window.spamInterval){
+            clearInterval(window.spamInterval);
+            alert("Canceled Previous");
+        }
         if (Notification.permission === "granted") {
             let delay = slide.value;
             let spamInterval = setInterval(() => {
@@ -206,12 +209,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
                     // icon: `https://loremflickr.com/320/240/${message.keyword}`
                 });
     
-                // window.spamInterval = spamInterval;
+                window.spamInterval = spamInterval;
             }, delay);
         }
     })
 });
-
-
-// Stopping The Spam
-// clearInterval(window.spamInterval);
