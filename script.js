@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const label = document.getElementById('label');
     const slide = document.getElementById('range');
     const start = document.getElementById('start');
-    const start = document.getElementById('insane');
+    const insane = document.getElementById('insane');
 
 
     slide.addEventListener('change', function(){
