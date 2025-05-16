@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const label = document.getElementById('label');
     const slide = document.getElementById('range');
     const start = document.getElementById('start');
+    const start = document.getElementById('insane');
+
 
     slide.addEventListener('change', function(){
         let val = slide.value;
@@ -211,6 +213,33 @@ document.addEventListener("DOMContentLoaded", (event) => {
     
                 window.spamInterval = spamInterval;
             }, delay);
+        }
+    })
+
+    // Go Insane
+    insane.addEventListener('click', function(){
+        if (window.spamInterval){
+            clearInterval(window.spamInterval);
+            alert("Canceled Previous");
+        }
+        if (Notification.permission === "granted") {
+            let spamInterval = setInterval(() => {
+                let message = getRandomTitleAndDescription();
+                new Notification(message.title, {
+                    body: message.description,
+                    // icon: `https://loremflickr.com/320/240/${message.keyword}`
+                });
+                new Notification(message.title, {
+                    body: message.description,
+                    // icon: `https://loremflickr.com/320/240/${message.keyword}`
+                });
+                new Notification(message.title, {
+                    body: message.description,
+                    // icon: `https://loremflickr.com/320/240/${message.keyword}`
+                });
+            }, 1); // Set to 1 millisecond for maximum speed
+        
+            window.spamInterval = spamInterval;
         }
     })
 });
